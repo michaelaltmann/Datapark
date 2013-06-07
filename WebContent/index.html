@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css"
+	href="styles/datapark.css" />
+	<script type="text/javascript" src="lib/jquery-1.10.1.min.js "></script>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<div id="logo">
+				<a href="index.html"><img height="100px" src="images/Plogo.jpg"	width="100px" /></a>
+			</div>
+			<div>
+				<a href="index.html"><h1 id="header-name">DataPark</h1></a>
+			</div>
+			<div id="main_nav">
+				<ul class="menu">
+					<li><a href="/">Home</a></li>
+					<li><a href="results.html">Results</a></li>
+				</ul>
+			</div>
+		</header>
+		<div id="page_content">
+			<article id="about">
+				<p>DataPark is a tool that provides what-if statistics on the
+					affects of new construction parking projections.</p>
+			</article>
+			<article id="input">
+				<form id="parameters" method="post" action="results.html">
+					<table>
+						<tr>
+							<td><label for="day">Day of week</label></td>
+							<td><select name="day" tabindex="1">
+									<option>-</option>
+									<option value="sun">Sunday</option>
+									<option value="mon">Monday</option>
+									<option value="tue">Tuesday</option>
+									<option value="wed">Wednesday</option>
+									<option value="thu">Thursday</option>
+									<option value="fri">Friday</option>
+									<option value="sat">Saturday</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><label for="time">Time of day</label></td>
+							<td><select name="time" tabindex="2">
+									<option>-</option>
+									<option value="0_2">12:00am - 2:59am</option>
+									<option value="3_5">3:00am - 5:59am</option>
+									<option value="6_8">6:00am - 8:59am</option>
+									<option value="9_11">9:00am - 11:59am</option>
+									<option value="12_14">12:00pm - 2:59pm</option>
+									<option value="15_17">3:00pm - 5:59pm</option>
+									<option value="18_20">6:00pm - 8:59pm</option>
+									<option value="21_23">9:00pm - 11:59pm</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td><label for="radius">How far away?</label></td>
+							<td><select name="radius" tabindex="3">
+									<option>-</option>
+									<option value=".25">1/4 mile</option>
+									<option value=".5">1/2 mile</option>
+									<option value=".75">3/4 mile</option>
+									<option value="1">1 mile</option>
+									<option value="1.5">1.5 miles</option>
+									<option value="2">2 miles</option>
+							</select></td>
+						</tr>
+					</table>
+					<label for="map">Select your location on the map.</label>
+					<div id="map" name="map" tabindex="4"> <iframe src="http://cdb.io/15TFcfN" height="100%" width="100%"> </iframe></div>
+					<input id="submit" tabindex="5" type="submit" value="Check Parking" />
+				</form>
+			</article>
+		</div>
+		<!-- page_content -->
+		<footer> </footer>
+	</div>
+	<!-- container -->
+</body>
+</html>
