@@ -13,14 +13,18 @@
 	});
 
 	function getResults() {
-		var webserviceAddress = 'http://michaelaltmann.cartodb.com/api/v2/sql?q=select%20sum(parking_supply.spaces)%20as%20tot%20from%20parking_supply';
-		var vacancyServiceAddress = 'http://michaelaltmann.cartodb.com/api/v2/sql?q=select%20sum(parking_vacancy.vacancy)%20as%20tot%20from%20parking_vacancy';
+		var spacesURL = 'http://michaelaltmann.cartodb.com/api/v2/sql';
+		var vacancyURL = 'http://michaelaltmann.cartodb.com/api/v2/sql';
 
-		$.getJSON(webserviceAddress, {}, function(data) {
+		$.getJSON(spacesURL, {
+			q : "select sum(parking_supply.spaces) as tot from parking_supply"
+		}, function(data) {
 			var spaces = data.rows[0].tot;
 			$('#before_spaces').text(spaces);
 		});
-		$.getJSON(vacancyServiceAddress, {}, function(data) {
+		$.getJSON(vacancyURL, {
+			q : "select sum(parking_vacancy.vacancy) as tot from parking_vacancy"
+		}, function(data) {
 			var vacancy = data.rows[0].tot;
 			$('#before_vacancy').text(vacancy);
 		});
