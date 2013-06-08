@@ -13,19 +13,26 @@
 	});
 
 	function getResults() {
+		// Should get these from the index.html
+		var lon = -93.29;
+		var lat = 44.92;
+		var radius = 100;
+		
 		var spacesURL = 'http://michaelaltmann.cartodb.com/api/v2/sql';
 		var vacancyURL = 'http://michaelaltmann.cartodb.com/api/v2/sql';
 
 		$.getJSON(spacesURL, {
-			q : "select sum(parking_supply.spaces) as tot from parking_supply"
+			q : "select sum(parking_supply.spaces) as tot from parking_supply where ST_Distance_Sphere(the_geom,ST_MakePoint("+lon+","+lat+")) < " + radius
 		}, function(data) {
 			var spaces = data.rows[0].tot;
+			spaces = Math.round(spaces);
 			$('#before_spaces').text(spaces);
 		});
 		$.getJSON(vacancyURL, {
-			q : "select sum(parking_vacancy.vacancy) as tot from parking_vacancy"
+			q : "select sum(parking_vacancy.vacancy) as tot from parking_vacancy where ST_Distance_Sphere(the_geom,ST_MakePoint("+lon+","+lat+")) < " + radius
 		}, function(data) {
 			var vacancy = data.rows[0].tot;
+			vacancy = Math.round(vacancy);
 			$('#before_vacancy').text(vacancy);
 		});
 
@@ -53,18 +60,19 @@
 
 
 			<table>
+			<tr><td><h3>Before</h3></td> <td><h3>After</h3></td></tr>
 				<tr>
 					<td>
 						<article id="before">
-							Number of parking spaces: <span id="before_spaces"></span> <br> Vacant
+							Nearby parking spaces: <span id="before_spaces"></span> <br>Nearby vacant
 							spaces: <span id="before_vacancy" > </span>
 							<div id="before_map"><iframe src="http://cdb.io/15TDQSj" height="100%" width="100%"></iframe></div>
 						</article>
 					</td>
 					<td><article id="after">
-Number of parking spaces: <span id="after_spaces" > </span><br> Vacant
+Nearby parking spaces: <span id="after_spaces" > </span><br> Nearby vacant
 							spaces: <span id="after_vacancy" ></span>
-							<div id="after_map">AFTER</div>
+							<div id="after_map"></div>
 						</article></td>
 				</tr>
 			</table>
