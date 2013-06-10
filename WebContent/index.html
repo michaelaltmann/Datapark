@@ -13,7 +13,7 @@
 				<a href="index.html"><img height="100px" src="images/Plogo.jpg"	width="100px" /></a>
 			</div>
 			<div>
-				<a href="index.html"><h1 id="header-name">DataPark</h1></a>
+				<a href="index.html"><h1 id="header-name">Data Park</h1></a>
 			</div>
 			<div id="main_nav">
 				<ul class="menu">
@@ -24,11 +24,18 @@
 		</header>
 		<div id="page_content">
 			<article id="about">
-				<p>DataPark is a tool that provides what-if statistics on the
-					affects of new construction parking projections.</p>
+				<p>Data Park is a tool that provides what-if statistics on the
+					effects of new construction parking projections.</p> In its current version it is really a prototype that 
+					serves as a conversation starter about how communities could benefit from ways to visualize parking.  Imagine that
+					you and your neighbors are considering a new development project, called "Option 1" which will be a large 
+					condo on the south side of 46 St, between Aldrich and Bryant.
+					<p>  
+					<small>Note:  Currently, the application does not really use the parameters that you select.  It always shows results for
+					parking near the intersection of 46 and Bryant.</small></p>
 			</article>
 			<article id="input">
 				<form id="parameters" method="post" action="results.html">
+				Select when and where you are concerned about parking and how far you are willing to walk to a parking space.
 					<table>
 						<tr>
 							<td><label for="day">Day of week</label></td>
@@ -70,9 +77,10 @@
 							</select></td>
 						</tr>
 					</table>
-					<label for="map">Select your location on the map.</label>
-					<div id="map" name="map" tabindex="4"> <iframe src="http://cdb.io/15TFcfN" height="100%" width="100%"> </iframe></div>
-					<input id="submit" tabindex="5" type="submit" value="Check Parking" />
+					<label for="map">Next click the "Check Parking" button to see what parking currently looks like and how it will be look under development Option #1.</label>
+					<iframe src="http://cdb.io/15TFcfN" height="400px" width="600px"> </iframe>
+					<br>
+					<input id="submit" type="submit" value="Check Parking" />
 				</form>
 			</article>
 		</div>
