@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>DataPark</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" type="text/css" href="styles/datapark.css" />
-<script type="text/javascript"
-	src="lib/jquery-1.10.1.min.js"></script>
-
-<script type="text/javascript">
 	$(document).ready(function() {
 		getResults();
 	});
@@ -77,58 +67,3 @@
 		});
 
 	}
-</script>
-</head>
-<body>
-	<div id="container">
-		<header>
-			<div id="logo">
-				<a href="index.html"><img height="100px" src="images/Plogo.jpg"
-					width="100px" /></a>
-			</div>
-			<div>
-				<a href="index.html"><h1 id="header-name">Data Park</h1></a>
-			</div>
-			<div id="main_nav">
-				<ul class="menu">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="results.html">Results</a></li>
-				</ul>
-			</div>
-		</header>
-		<div id="page_content">
-
-This page shows the vacancy at various parking locations around the neighborhood.
-The map on the left shows the current situation, which the map on the right shows
-the projected vacancy rate with the proposed development, called "Option 1".  Each parking
-spot is colored to indicate how likely it is to be vacant.  Bright red indicates 
-less than a 5% chance of the spot being vacant, while bright green indicates a chance greater 
-than 75%.
-			<table>
-			<tr><td><h3>Current</h3></td> <td><h3>Option 1</h3></td></tr>
-				<tr>
-					<td>
-						<article id="before">
-							Nearby parking spaces: <span id="before_spaces"></span> <br>Nearby vacant
-							spaces: <span id="before_vacancy" > </span>
-							
-						</article>
-					</td>
-					<td><article id="after">
-Nearby parking spaces: <span id="option1_spaces" > </span><br> Nearby vacant
-							spaces: <span id="option1_vacancy" ></span>
-						</article></td>
-				</tr>
-				<tr>
-				<td>   <iframe src="http://cdb.io/15TDQSj" height="400px" width="400px"></iframe></td>
-				<td>   <iframe src="http://cdb.io/19Wqg3j" height="400px" width="400px"></iframe></td>
-				</tr>
-			</table>
-
-		</div>
-		<!-- page_content -->
-		<footer> </footer>
-	</div>
-	<!-- container -->
-</body>
-</html>

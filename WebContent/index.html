@@ -1,92 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" type="text/css"
-	href="styles/datapark.css" />
-	<script type="text/javascript" src="lib/jquery-1.10.1.min.js "></script>
+<title>Data Park</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="styles/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-	<div id="container">
-		<header>
-			<div id="logo">
-				<a href="index.html"><img height="100px" src="images/Plogo.jpg"	width="100px" /></a>
+	<div class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<span id="logo">
+					<a href="#"><img height="60px" src="images/Plogo.jpg"
+						width="100px" /></a>
+				</span>
+				<span class="nav-collapse collapse pull-right">
+					<ul class="nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</span>
+				<!--/.nav-collapse -->
 			</div>
-			<div>
-				<a href="index.html"><h1 id="header-name">Data Park</h1></a>
-			</div>
-			<div id="main_nav">
-				<ul class="menu">
-					<li><a href="/">Home</a></li>
-					<li><a href="results.html">Results</a></li>
-				</ul>
-			</div>
-		</header>
-		<div id="page_content">
-			<article id="about">
-				<p>Data Park is a tool that provides what-if statistics on the
-					effects of new construction parking projections.  It was developed as part of the 2013 Hack for MN.  See my <a href='http://maltmann.wordpress.com/'>blog for details.</a></p> In its current version it is really a prototype that 
-					serves as a conversation starter about how communities could benefit from ways to visualize parking.  Imagine that
-					you and your neighbors are considering a new development project, called "Option 1" which will be a large 
-					condo on the south side of 46 St, between Aldrich and Bryant.  It will require an average of 20 cars parked on the street.
-					<p>  
-			</article>
-			<article id="input">
-				<form id="parameters" method="post" action="results.html">
-				Select when and where you are concerned about parking and how far you are willing to walk to a parking space.
-					<table>
-						<tr>
-							<td><label for="day">Day of week</label></td>
-							<td><select name="day" tabindex="1">
-									<option>-</option>
-									<option value="sun">Sunday</option>
-									<option value="mon">Monday</option>
-									<option value="tue">Tuesday</option>
-									<option value="wed">Wednesday</option>
-									<option value="thu">Thursday</option>
-									<option value="fri">Friday</option>
-									<option value="sat">Saturday</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><label for="time">Time of day</label></td>
-							<td><select name="time" tabindex="2">
-									<option>-</option>
-									<option value="0_2">12:00am - 2:59am</option>
-									<option value="3_5">3:00am - 5:59am</option>
-									<option value="6_8">6:00am - 8:59am</option>
-									<option value="9_11">9:00am - 11:59am</option>
-									<option value="12_14">12:00pm - 2:59pm</option>
-									<option value="15_17">3:00pm - 5:59pm</option>
-									<option value="18_20">6:00pm - 8:59pm</option>
-									<option value="21_23">9:00pm - 11:59pm</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><label for="radius">How far would you walk?</label></td>
-							<td><select name="radius" tabindex="3">
-									<option>-</option>
-									<option value=".25">1/4 mile</option>
-									<option value=".5">1/2 mile</option>
-									<option value=".75">3/4 mile</option>
-									<option value="1">1 mile</option>
-									<option value="1.5">1.5 miles</option>
-									<option value="2">2 miles</option>
-							</select></td>
-						</tr>
-					</table>
-					<label for="map">Next click the "Check Parking" button to see what parking currently looks like and how it will look under the developer's "Option 1".</label>
-					<br><small>Note:  Currently, the application does not really use the parameters that you select or the location you click.  It always shows results for
-					parking within 100 meters of the intersection of 46 and Bryant.</small></p>
-					<iframe src="http://cdb.io/15TFcfN" height="400px" width="600px"> </iframe>
-					<br>
-					<input id="submit" type="submit" style="float:left" value="Check Parking" />
-				</form>
-			</article>
 		</div>
-		<!-- page_content -->
-		<footer> </footer>
 	</div>
-	<!-- container -->
+
+
+	<div class="hero-unit">
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab0">
+
+				<h4>Introduction</h4>
+				Data Park is a tool that provides insight into the effect on parking
+				of new construction projects. It was developed as part of the 2013
+				Hack for MN. See my <a href='http://maltmann.wordpress.com/'>blog
+					for details.</a> In its current version it is really a prototype that
+				serves as a conversation starter about how communities could benefit
+				from ways to visualize parking.
+				<p>Imagine that you and your neighbors are considering a new
+					development project, called "Option 1", which will be a large
+					condominium on the south side of 46 Street, between Aldrich and
+					Bryant. On average, it will require an additional 20 cars parked on
+					the street.</p>
+
+				<a href="#tab1" data-toggle="tab" class="btn btn-primary btn-large">Assumptions
+					&raquo;</a>
+				<p>
+			</div>
+
+			<div class="tab-pane disabled" id="tab1">
+				<p>
+				<h4>Assumptions</h4>
+				Lets imagine that we have gathered information about the current
+				parking situation. We have mapped out the parking spaces in the
+				neighborhood, measured the parking demand from businesses,
+				multi-unit residential buildings, and special places likes parks. We
+				have also settled on some assumptions about how far people typically
+				park from their destination. The supply and demand can be visualized
+				on these maps
+				</p>
+				<table>
+					<tr>
+						<td><div>
+								<iframe src="http://cdb.io/14EcUXb" height="400px" width="400px"></iframe>
+							</div></td>
+						<td><div>
+								<iframe src="http://cdb.io/14EddB9" height="400px" width="400px"></iframe>
+							</div></td>
+					</tr>
+				</table>
+
+
+				<a id="vacancyButton" href="#tab2" data-toggle="tab"
+					class="btn btn-primary btn-large">Vacancy &raquo;</a>
+
+			</div>
+
+			<div class="tab-pane" id="tab2">
+				<h4>Vacancy</h4>
+				Lets look at how the proposed condominium will affect parking.
+				Indicate when are you concerned about parking.
+				<p>
+					Day: <span class="btn-group" data-toggle="buttons-radio">
+						<button class="btn active">Weekday</button>
+						<button class="btn">Weekend</button>
+					</span> Time:
+					</td> <span class="btn-group" data-toggle="buttons-radio">
+						<button class="btn active">Daytime</button>
+						<button class="btn">Evening</button>
+					</span> <br>
+				<div class="accordion" id="accordion2">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<button class="accordion-toggle btn btn-primary btn-large" data-toggle="collapse"
+								data-parent="#accordion2" href="#collapseOne">Show Vacancy Rates</button>
+						</div>
+						<div id="collapseOne" class="accordion-body collapse">
+							<div class="accordion-inner">
+
+								<table id="results ">
+									<tr>
+										<td><h3>Current</h3></td>
+										<td><h3>Option 1</h3></td>
+									</tr>
+									<tr>
+										<td>
+											<article id="before">
+												Nearby parking spaces: <span id="before_spaces"></span> <br>Nearby
+												vacant spaces: <span id="before_vacancy"> </span>
+
+											</article>
+										</td>
+										<td><article id="after">
+												Nearby parking spaces: <span id="option1_spaces"> </span><br>
+												Nearby vacant spaces: <span id="option1_vacancy"></span>
+											</article></td>
+									</tr>
+									<tr>
+										<td>
+<iframe src="http://cdb.io/19ciW21" height="400px"
+												width="500px"></iframe>
+												</td>
+										<td><iframe src="http://cdb.io/12Prn4D" height="400px"
+												width="500px"></iframe></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="lib/jquery-1.10.1.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="datapark.js"></script>
 </body>
 </html>
