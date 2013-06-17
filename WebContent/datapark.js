@@ -1,9 +1,45 @@
-	$(document).ready(function() {
-		getResults();
-	});
+	
+	function showSupplyAndDemand() {
+		showMap('parking_supply','supply_map');
+		showMap('parking_demand','demand_map');
+		
+	}
+	function showVacancyRates() {
+		getSummaryResults();
+		showMap('parking_vacancy','map0');
+		showMap('parking_vacancy_option1','map1');
+	}
 
-	function getResults() {
-		// Should get these from the index.html
+	function showMap(mapName, mapDomId) {
+		cartodb.createVis(mapDomId, 'http://michaelaltmann.cartodb.com/api/v1/viz/' + mapName+'/viz.json', {
+	        shareable: false,
+	        title: false,
+	        description: false,
+	        search: false,
+	        tiles_loader: true,
+	        center_lat: 44.92,
+	        center_lon: -93.29,
+	        zoom: 16
+	    })
+	    .done(function(vis, layers) {
+	      // layer 0 is the base layer, layer 1 is cartodb layer
+	      layers[1].on('featureOver', function(e, pos, latlng, data) {
+	        cartodb.log.log(e, pos, latlng, data);
+	      });
+
+	      // you can get the native map to work with it
+	      // depending if you use google maps or leaflet
+	      map = vis.getNativeMap();
+	      // map.setZoom(3)
+	      // map.setCenter(new google.maps.Latlng(...))
+	    })
+	    .error(function(err) {
+	      console.log(err);
+	    });
+	}
+	
+	function getSummaryResults() {
+		// Should get these from the input fields
 		var lon = -93.29;
 		var lat = 44.92;
 		var radius = 100;
@@ -65,5 +101,8 @@
 			vacancy = Math.round(vacancy);
 			$('#option1_vacancy').text(vacancy);
 		});
-
+		
+		$(document).ready(function() {
+			$('#tab1').on(showSupplyAndDemand);
+		});
 	}

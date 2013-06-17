@@ -17,6 +17,14 @@
     width: device-width;
 }
 
+.map {
+        height: 400px;
+        width: 500px;
+        padding: 0;
+        margin: 0;
+      }
+     
+
 /* - - - - - - - - - HEADER - - - - - - - - - */
 #logo {
 	float: left;
