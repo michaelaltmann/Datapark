@@ -60,10 +60,14 @@
 				neighborhood, measured the parking demand from businesses,
 				multi-unit residential buildings, and special places likes parks. We
 				have also settled on some assumptions about how far people typically
-				park from their destination. The supply and demand can be visualized
+				park from their destination. [NB: In the future, this 
+				application let you edit the supply and depand maps, as well as adjust walking behavior.] The supply and demand can be visualized
 				on these <a href="javascript:showSupplyAndDemand();">maps.</a>
 				</p>
-				<table>
+				<table cellpadding="5px">
+					<tr>
+						<td>Supply of Parking Spaces</td>
+						<td>Demand for Parking Spaces</td>
 					<tr>
 						<td><div id="supply_map" class="map">
 							</div></td>
@@ -81,7 +85,7 @@
 			<div class="tab-pane" id="tab2">
 				<h4>Vacancy</h4>
 				Lets look at how the proposed condominium will affect parking.
-				Indicate when are you concerned about parking.
+				Indicate when are you concerned about parking and then click on the button to see maps of the relative vacancy rate before and after the construction, along with statistics on parking near 46th and Bryant.
 				<p>
 					Day: <span class="btn-group" data-toggle="buttons-radio">
 						<button class="btn active">Weekday</button>
@@ -91,9 +95,9 @@
 						<button class="btn active">Daytime</button>
 						<button class="btn">Evening</button>
 					</span> <br>
-					<button onclick='javascript:showVacancyRates()'>Show
+					<button class="btn-primary btn-medium" onclick='javascript:showVacancyRates()'>Show
 						Vacancy Rates</button>
-				<table id="results">
+				<table id="results" cellpadding="5px">
 					<tr>
 						<td><h3>Current</h3></td>
 						<td><h3>Option 1</h3></td>
