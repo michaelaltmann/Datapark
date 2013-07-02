@@ -1,175 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Data Park</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="styles/datapark.css" rel="stylesheet" media="screen">
-<link href="styles/bootstrap.min.css" rel="stylesheet" media="screen">
-<link rel="stylesheet"
-	href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.css" />
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="http://libs.cartocdn.com/cartodb.js/v2/cartodb.js"></script>
-</head>
-<body>
-	<div class="navbar navbar-inverse">
-		<div class="navbar-inner">
-			<div class="container">
-				<span id="logo"> <a href="#tab0" data-toggle="tab"><img height="60px"
-						src="images/Plogo.jpg" width="100px" /></a>
-				</span> <span class="nav-collapse collapse pull-right">
-					<ul class="nav">
-						<li class="active"><a href="#tab0" data-toggle="tab">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</span>
-				<!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
-
-
-	<div class="hero-unit">
-		<div class="tab-content">
-			<div class="tab-pane active" id="tab0">
-
-				<h4>Introduction</h4>
-				Data Park is a tool that provides insight into the effect on parking
-				of new construction projects. It was developed as part of the 2013
-				Hack for MN. See my <a href='http://maltmann.wordpress.com/'>blog
-					for details.</a> In its current version it is really a prototype that
-				serves as a conversation starter about how communities could benefit
-				from ways to visualize parking and think about how facts, perceptions and behavior interact.
-                <p>Parking is often a contention issue for development.  One person's perking problem is another person's green space.   
-                Before going further, you are encouraged to read 
-                <a href="#tab3" data-toggle="tab" >the section </a> about the policy challenges about parking.
-                
-                </p>
-				<p>Imagine that you and your neighbors are considering a new
-					development project, called "Option 1", which will be a large
-					condominium on the south side of 46 Street, between Aldrich and
-					Bryant. On average, it will require an additional 20 cars parked on
-					the street.</p>
-
-				<a href="#tab1" data-toggle="tab" class="btn btn-primary btn-large">Assumptions
-					&raquo;</a>
-				<p>
-			</div>
-
-			<div class="tab-pane" id="tab1">
-				<p>
-				<h4>Assumptions</h4>
-				Lets imagine that we have gathered information about the current
-				parking situation. We have mapped out the parking spaces in the
-				neighborhood, measured the parking demand from businesses,
-				multi-unit residential buildings, and special places likes parks. We
-				have also settled on some assumptions about how far people typically
-				park from their destination. [NB: In the future, this 
-				application let you edit the supply and demand maps, as well as adjust walking behavior.] The supply and demand can be visualized
-				on these <a href="javascript:showSupplyAndDemand();">maps.</a>
-				
-				<table cellpadding="5px">
-					<tr>
-						<td>Supply of Parking Spaces</td>
-						<td>Demand for Parking Spaces</td>
-					<tr>
-						<td><div id="supply_map" class="map">
-							</div></td>
-						<td><div id="demand_map" class="map">
-							</div></td>
-					</tr>
-				</table>
-
-
-				<a id="vacancyButton" href="#tab2" data-toggle="tab"
-					class="btn btn-primary btn-large">Vacancy &raquo;</a>
-
-			</div>
-
-			<div class="tab-pane" id="tab2">
-				<h4>Vacancy</h4>
-				Lets look at how the proposed condominium will affect parking.
-				Indicate when are you concerned about parking and then click on the button to see maps of the relative vacancy rate before and after the construction, along with statistics on parking near 46th and Bryant.
-				<p>
-					Day: <span class="btn-group" data-toggle="buttons-radio">
-						<button class="btn active">Weekday</button>
-						<button class="btn">Weekend</button>
-					</span> Time:
-					<span class="btn-group" data-toggle="buttons-radio">
-						<button class="btn active">Daytime</button>
-						<button class="btn">Evening</button>
-					</span> <br>
-					<button class="btn-primary btn-medium" onclick='javascript:showVacancyRates()'>Show
-						Vacancy Rates</button>
-				<table id="results" cellpadding="5px">
-					<tr>
-						<td><h3>Current</h3></td>
-						<td><h3>Option 1</h3></td>
-					</tr>
-					<tr>
-						<td>
-							<article id="before">
-								Nearby parking spaces: <span id="before_spaces"></span> <br>Nearby
-								vacant spaces: <span id="before_vacancy"> </span>
-
-							</article>
-						</td>
-						<td><article id="after">
-								Nearby parking spaces: <span id="option1_spaces"> </span><br>
-								Nearby vacant spaces: <span id="option1_vacancy"></span>
-							</article></td>
-					</tr>
-					<tr>
-						<td>
-							<div id="map0" class="map" />
-						</td>
-						<td>
-							<div id="map1" class="map" />
-						</td>
-					</tr>
-				</table>
-			</div>
-            <div class="tab-pane" id="tab3">
-				<h4>Education about Parking Issues</h4>
-                    This section will describe some of the general civic planning issues realted to parking.  Things like
+    
+    <head>
+        <title>Data Park</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="styles/datapark.css" rel="stylesheet" media="screen">
+        <link href="styles/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.css" />
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="http://libs.cartocdn.com/cartodb.js/v2/cartodb.js"></script>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                    <span id="logo">
+                        <a href="#tab0" data-toggle="tab">
+                            <img height="60px" src="images/Plogo.jpg" width="100px" />
+                        </a>
+                    </span>
+                    <span class="nav-collapse collapse pull-right">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#tab0" data-toggle="tab">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </span>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="hero-unit">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab0">
+                    <h4>Introduction</h4>Data Park is a tool that provides insight into the effect on parking of new construction projects. It was developed as part of the 2013 Hack for MN. See my
+                    <a href='http://maltmann.wordpress.com/'>blog for details.</a>In its current version it is really a prototype that serves as a conversation starter about how communities could benefit from ways to visualize parking and think about how facts, perceptions and behavior interact.
+                    <p>Parking is often a contention issue for development. One person's perking problem is another person's green space. Before going further, you are encouraged to read
+                        <a href="#tab3" data-toggle="tab">the section</a>about the policy challenges about parking.</p>
+                    <p>Imagine that you and your neighbors are considering a new development project, called "Option 1", which will be a large condominium on the south side of 46 Street, between Aldrich and Bryant. On average, it will require an additional 20 cars parked on the street.</p>
+                    <a href="#tab1" data-toggle="tab" class="btn btn-primary btn-large">Assumptions &raquo;</a>
+                    <p>
+                </div>
+                <div class="tab-pane" id="tab1">
+                    <p>
+                        <h4>Assumptions</h4>Lets imagine that we have gathered information about the current parking situation. We have mapped out the parking spaces in the neighborhood, measured the parking demand from businesses, multi-unit residential buildings, and special places likes parks. We have also settled on some assumptions about how far people typically park from their destination. [NB: In the future, this application let you edit the supply and demand maps, as well as adjust walking behavior.] The supply and demand can be visualized on these
+                        <a href="javascript:showSupplyAndDemand();">maps.</a>
+                        <table cellpadding="5px">
+                            <tr>
+                                <td>Supply of Parking Spaces</td>
+                                <td>Demand for Parking Spaces</td>
+                                <tr>
+                                    <td>
+                                        <div id="supply_map" class="map"></div>
+                                    </td>
+                                    <td>
+                                        <div id="demand_map" class="map"></div>
+                                    </td>
+                                </tr>
+                        </table>
+                        <a id="vacancyButton" href="#tab2" data-toggle="tab" class="btn btn-primary btn-large">Vacancy &raquo;</a>
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <h4>Vacancy</h4>Lets look at how the proposed condominium will affect parking. Indicate when are you concerned about parking and then click on the button to see maps of the relative vacancy rate before and after the construction, along with statistics on parking near 46th and Bryant.
+                    <p>Day:
+                        <span class="btn-group" data-toggle="buttons-radio">
+                            <button class="btn active">Weekday</button>
+                            <button class="btn">Weekend</button>
+                        </span>Time:
+                        <span class="btn-group" data-toggle="buttons-radio">
+                            <button class="btn active">Daytime</button>
+                            <button class="btn">Evening</button>
+                        </span>
+                        <br>
+                        <button class="btn-primary btn-medium" onclick='javascript:showVacancyRates()'>Show Vacancy Rates</button>
+                        <table id="results" cellpadding="5px">
+                            <tr>
+                                <td>
+                                    <h3>Current</h3>
+                                </td>
+                                <td>
+                                    <h3>Option 1</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <article id="before">Nearby parking spaces:
+                                        <span id="before_spaces"></span>
+                                        <br>Nearby vacant spaces:
+                                        <span id="before_vacancy"></span>
+                                    </article>
+                                </td>
+                                <td>
+                                    <article id="after">Nearby parking spaces:
+                                        <span id="option1_spaces"></span>
+                                        <br>Nearby vacant spaces:
+                                        <span id="option1_vacancy"></span>
+                                    </article>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="map0" class="map" />
+                                </td>
+                                <td>
+                                    <div id="map1" class="map" />
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <h4>Education about Parking Issues</h4>This section will describe some of the general civic planning issues realted to parking. Things like
                     <ul>
                         <li>Explicit cost of parking</li>
                         <li>Lost opportunity of parking area that could be used in other ways</li>
                         <li>Advantages of encouraging various forms of transportaion</li>
                         <li>Supporting local businesses by encouraging outside customers</li>
                         <li>Providing access for those with limited mobility</li>
-                        <li>Temporal variability in usage by businesses, events, schools, houses of worship<li>
+                        <li>Temporal variability in usage by businesses, events, schools, houses of worship
+                            <li>
                     </ul>
-				<a  href="#tab4" data-toggle="tab"
-					class="btn btn-primary btn-large">Perceptions &raquo;</a>
-                    
-            </div>
-                    
-            <div class="tab-pane" id="tab4">
-				<h4>Perceptions</h4>
-                    This section would have a questionnaire to gather information about peoples behaviors and perceptions.  For example, 
+                    <a href="#tab4" data-toggle="tab" class="btn btn-primary btn-large">Perceptions &raquo;</a>
+                </div>
+                <div class="tab-pane" id="tab4">
+                    <h4>Perceptions</h4>This section would have a questionnaire to gather information about peoples behaviors and perceptions. For example,
                     <ul>
                         <li>How often in the summer/winter do you drive to X?</li>
                         <li>Do you consider it a problem if you have to walk more that 1/2 a block to X? 1 block?</li>
                         <li>Are you concerned about people violating parking regulations, such as parking in crosswalks or blocking driveways?</li>
-                        <li>Do you feel that there should be less parking?  If so, how would you like to see that space used? </li>
+                        <li>Do you feel that there should be less parking? If so, how would you like to see that space used?</li>
                         <li>Are you concerned that parking at X costs money?</li>
                         <li>When you drive to location X, how long do you usually stay?</li>
                     </ul>
- 				<a  href="#tab0" data-toggle="tab"
-					class="btn btn-primary btn-large">Introduction &raquo;</a>
-                    
-
-            <div>
-
-		</div>
-	</div>
-
-
-
-	<script src="lib/jquery-1.10.1.min.js"></script>
-	<script src="lib/bootstrap.min.js"></script>
-	<script src="datapark.js"></script>
-</body>
+                    <a href="#tab0" data-toggle="tab" class="btn btn-primary btn-large">Introduction &raquo;</a>
+                </div>
+                <script src="lib/jquery-1.10.1.min.js"></script>
+                <script src="lib/bootstrap.min.js"></script>
+                <script src="datapark.js"></script>
+            </div>
+        </div>
+    </body>
 </html>
