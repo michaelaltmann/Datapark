@@ -27,10 +27,7 @@
                                 <a href="#tab0" data-toggle="tab">Home</a>
                             </li>
                             <li>
-                                <a href="#about">About</a>
-                            </li>
-                            <li>
-                                <a href="#contact">Contact</a>
+                                <a href="#contact" data-toggle="tab">Contact</a>
                             </li>
                         </ul>
                     </span>
@@ -43,17 +40,17 @@
                 <div class="tab-pane active" id="tab0">
                     <h4>Introduction</h4>Data Park is a tool that provides insight into the effect on parking of new construction projects. It was developed as part of the 2013 Hack for MN. See my
                     <a href='http://maltmann.wordpress.com/'>blog for details.</a>In its current version it is really a prototype that serves as a conversation starter about how communities could benefit from ways to visualize parking and think about how facts, perceptions and behavior interact.
-                    <p>Parking is often a contention issue for development. One person's perking problem is another person's green space. Before going further, you are encouraged to read
-                        <a href="#tab3" data-toggle="tab">the section</a>about the policy challenges about parking.</p>
+                    <p>Parking is often a contention issue for development. One person's parking problem is another person's green space. Before going further, you are encouraged to read
+                        <a href="#tab3" data-toggle="tab">the section</a> about the policy challenges about parking.</p>
                     <p>Imagine that you and your neighbors are considering a new development project, called "Option 1", which will be a large condominium on the south side of 46 Street, between Aldrich and Bryant. On average, it will require an additional 20 cars parked on the street.</p>
                     <a href="#tab1" data-toggle="tab" class="btn btn-primary btn-large">Assumptions &raquo;</a>
                     <p>
                 </div>
                 <div class="tab-pane" id="tab1">
                     <p>
-                        <h4>Assumptions</h4>Lets imagine that we have gathered information about the current parking situation. We have mapped out the parking spaces in the neighborhood, measured the parking demand from businesses, multi-unit residential buildings, and special places likes parks. We have also settled on some assumptions about how far people typically park from their destination. [NB: In the future, this application let you edit the supply and demand maps, as well as adjust walking behavior.] The supply and demand can be visualized on these
-                        <a href="javascript:showSupplyAndDemand();">maps.</a>
-                        <table cellpadding="5px">
+                        <h4>Assumptions</h4>Lets imagine that we have gathered information about the current parking situation. We have mapped out the parking spaces in the neighborhood, measured the parking demand from businesses, multi-unit residential buildings, and special places likes parks. We have also settled on some assumptions about how far people typically park from their destination. [NB: In the future, this application would let you edit the supply and demand maps, as well as adjust walking behavior.] The supply and demand can be visualized on these maps.</a>
+                    <button class="btn-primary btn-medium" onclick='javascript:showSupplyAndDemand()'>Show Supply and Demand</button>        
+                    <table id="supplyAndDemand"  cellpadding="5px">
                             <tr>
                                 <td>Supply of Parking Spaces</td>
                                 <td>Demand for Parking Spaces</td>
@@ -66,7 +63,8 @@
                                     </td>
                                 </tr>
                         </table>
-                        <a id="vacancyButton" href="#tab2" data-toggle="tab" class="btn btn-primary btn-large">Vacancy &raquo;</a>
+                    <br>
+                    <a id="vacancyButton" href="#tab2" data-toggle="tab" class="btn btn-primary btn-large">Vacancy &raquo;</a>
                 </div>
                 <div class="tab-pane" id="tab2">
                     <h4>Vacancy</h4>Lets look at how the proposed condominium will affect parking. Indicate when are you concerned about parking and then click on the button to see maps of the relative vacancy rate before and after the construction, along with statistics on parking near 46th and Bryant.
@@ -141,10 +139,13 @@
                     </ul>
                     <a href="#tab0" data-toggle="tab" class="btn btn-primary btn-large">Introduction &raquo;</a>
                 </div>
-                <script src="lib/jquery-1.10.1.min.js"></script>
-                <script src="lib/bootstrap.min.js"></script>
-                <script src="datapark.js"></script>
+                <div class="tab-pane" id="contact">
+                    Email: <a href="mailto:michael.altmann@gmail.com">Michael.Altmann@gmail.com</a> 
+                </div>
+
             </div>
-        </div>
+        <script src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/bootstrap.min.js"></script>
+        <script src="datapark.js"></script>
     </body>
 </html>
